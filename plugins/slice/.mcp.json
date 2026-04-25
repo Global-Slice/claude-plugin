@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "slice": {
+      "type": "http",
+      "url": "https://app.sliceglobal.com/api/mcp/mcp"
+    }
+  }
+}

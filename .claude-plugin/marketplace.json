@@ -1,0 +1,20 @@
+{
+  "name": "slice-plugins",
+  "owner": {
+    "name": "Slice Global Equity",
+    "email": "support@sliceglobal.com"
+  },
+  "metadata": {
+    "description": "Official Slice plugins for Claude Code.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "slice",
+      "source": "./plugins/slice",
+      "description": "Read-only access to your Slice cap-table via the Slice MCP server.",
+      "category": "data",
+      "keywords": ["cap-table", "equity", "mcp", "finance"]
+    }
+  ]
+}
