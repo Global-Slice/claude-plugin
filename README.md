@@ -1,2 +1,67 @@
-# claude-plugin
-Slice Claude plugin for the Claude plugin store
+# Slice plugins for Claude Code
+
+Official [Claude Code](https://code.claude.com) plugins published by [Slice Global Equity](https://www.sliceglobal.com).
+
+This repository is a Claude Code [plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces). It currently ships a single plugin:
+
+- [`slice`](./plugins/slice) — read-only access to your Slice cap-table, grants, shares, warrants, convertibles, ownership, and equity plans through the Slice MCP server.
+
+## What you can ask Claude
+
+Once the plugin is enabled, Claude can answer questions like:
+
+- "Summarize my cap table."
+- "List all grants for Alice Smith."
+- "What is the fully diluted ownership percentage of our top 5 stakeholders?"
+- "Show me all outstanding warrants and their strike prices."
+- "How many shares are still available in the 2024 ESOP pool?"
+
+The plugin is **read-only** in this release: Claude cannot create, modify, or delete data in your Slice account.
+
+## Prerequisites
+
+- [Claude Code](https://code.claude.com/docs/en/setup) installed.
+- An active [Slice](https://www.sliceglobal.com) login at `app.sliceglobal.com`.
+
+## Install
+
+In Claude Code, run:
+
+```shell
+/plugin marketplace add Global-Slice/claude-plugin
+/plugin install slice@slice-plugins
+```
+
+The first command registers this repository as a marketplace; the second installs the `slice` plugin from it.
+
+## First-time authentication
+
+The first time Claude calls a Slice tool, Claude Code opens your browser to complete an OAuth 2.1 sign-in against Slice's identity provider (Descope). After you approve, the access and refresh tokens are stored in your operating system's secure store (macOS Keychain, Windows Credential Manager, or libsecret on Linux) and refreshed automatically. Tokens never leave your machine.
+
+## Verify the install
+
+```shell
+/plugin list          # slice@slice-plugins should be listed and enabled
+/mcp                  # the `slice` server should appear as connected
+/mcp slice            # lists every tool the Slice MCP server exposes
+```
+
+## Security & privacy
+
+- **Read-only**: this release exposes only read tools. No mutations.
+- **Scoped to your login**: every request runs under your Slice user; you only see data your Slice account is authorized to see.
+- **No long-lived secrets in the plugin**: `.mcp.json` does not contain any tokens or API keys. All auth is handled by Claude Code's built-in OAuth flow.
+- **Tokens stay on your machine**: stored by Claude Code in the OS secure store and refreshed locally.
+
+## Troubleshooting
+
+- **`/mcp slice` shows "not connected" or auth errors**: run `/mcp` and reconnect the `slice` server. This restarts the OAuth flow and replaces any stale tokens.
+- **Browser did not open during sign-in**: copy the URL printed in the Claude Code output and open it manually.
+- **Plugin not visible after install**: run `/reload-plugins`, then `/plugin list`.
+- **Need to fully reset**: `/plugin uninstall slice@slice-plugins` followed by `/plugin install slice@slice-plugins`.
+
+If the issue persists, please contact [support@sliceglobal.com](mailto:support@sliceglobal.com).
+
+## License
+
+[MIT](./LICENSE) — © 2026 Slice Global Equity.
