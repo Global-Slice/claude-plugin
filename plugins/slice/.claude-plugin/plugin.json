@@ -1,6 +1,6 @@
 {
   "name": "slice",
-  "description": "Read-only access to your Slice cap-table, grants, shares, warrants, convertibles, ownership, and equity plans via the Slice MCP server.",
+  "description": "Read-only access to your Slice cap-table, securities, ownership, compliance, workflows, valuations, and equity plans via the Slice MCP server.",
   "version": "0.1.0",
   "author": {
     "name": "Slice Global Equity",
@@ -9,5 +9,21 @@
   "homepage": "https://docs.slice.com/mcp",
   "repository": "https://github.com/Global-Slice/claude-plugin",
   "license": "MIT",
-  "keywords": ["slice", "cap-table", "equity", "mcp", "finance", "esop", "stakeholders"]
+  "keywords": [
+    "slice",
+    "cap-table",
+    "equity",
+    "mcp",
+    "finance",
+    "esop",
+    "stakeholders",
+    "compliance",
+    "workflows",
+    "securities",
+    "waterfall",
+    "valuations",
+    "board",
+    "presentations",
+    "grant-approvals"
+  ]
 }

@@ -12,9 +12,17 @@
     {
       "name": "slice",
       "source": "./plugins/slice",
-      "description": "Read-only access to your Slice cap-table via the Slice MCP server.",
+      "description": "Read-only Slice cap-table, securities, compliance, and workflow access via the Slice MCP server.",
       "category": "data",
-      "keywords": ["cap-table", "equity", "mcp", "finance"]
+      "keywords": [
+        "cap-table",
+        "equity",
+        "mcp",
+        "finance",
+        "compliance",
+        "workflows",
+        "securities"
+      ]
     }
   ]
 }
