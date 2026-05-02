@@ -1,6 +1,6 @@
 # `slice` plugin
 
-Read-only access to your [Slice](https://www.sliceglobal.com) cap-table, grants, shares, warrants, convertibles, ownership, and equity plans for [Claude Code](https://code.claude.com), powered by the Slice MCP server.
+Read-only access to your [Slice](https://www.sliceglobal.com) cap-table, grants, shares, warrants, convertibles, ownership, equity plans, compliance tickets, workflows, valuations, and company settings for [Claude Code](https://code.claude.com), powered by the Slice MCP server.
 
 ## Install
 
@@ -8,6 +8,24 @@ Read-only access to your [Slice](https://www.sliceglobal.com) cap-table, grants,
 /plugin marketplace add Global-Slice/claude-plugin
 /plugin install slice@slice-plugins
 ```
+
+
+## Capabilities
+
+The Slice MCP server exposes read-only tools for cap-table, securities, ownership, stakeholders, share classes, rounds, ESOP pools, compliance tickets, workflows, payments, tax withholding, valuations, and related company configuration. Run `/mcp slice` to see the current tool list.
+
+This plugin also includes Claude skills for using those tools effectively:
+
+- `securities-analysis`
+- `cap-table-analysis`
+- `compliance-analysis`
+- `equity-compensation-analysis`
+- `funding-rounds-analysis`
+- `waterfall-analysis`
+- `workflows-analysis`
+- `board-presentation-analysis`
+
+The skills favor aggregate/filter-first workflows and avoid dumping large raw records into the chat context.
 
 ## First-time authentication
 

@@ -4,7 +4,7 @@ Official [Claude Code](https://code.claude.com) plugins published by [Slice Glob
 
 This repository is a Claude Code [plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces). It currently ships a single plugin:
 
-- [`slice`](./plugins/slice) — read-only access to your Slice cap-table, grants, shares, warrants, convertibles, ownership, and equity plans through the Slice MCP server.
+- [`slice`](./plugins/slice) — read-only access to your Slice cap-table, grants, shares, warrants, convertibles, ownership, equity plans, compliance tickets, workflows, valuations, and company settings through the Slice MCP server.
 
 ## What you can ask Claude
 
@@ -15,8 +15,26 @@ Once the plugin is enabled, Claude can answer questions like:
 - "What is the fully diluted ownership percentage of our top 5 stakeholders?"
 - "Show me all outstanding warrants and their strike prices."
 - "How many shares are still available in the 2024 ESOP pool?"
+- "What are our highest-risk compliance issues?"
+- "Which exercise workflows are waiting on payment or tax withholding?"
+- "Model how proceeds would split in a $50M exit waterfall."
+- "Prepare a board summary for offered grants and ESOP pool usage."
 
 The plugin is **read-only** in this release: Claude cannot create, modify, or delete data in your Slice account.
+
+## Included guidance
+
+The plugin also ships Claude skills that teach agents how to use Slice MCP tools without over-fetching data:
+
+- Securities and vesting timeline analysis.
+- Cap-table, ownership, ESOP pool, share-class, and round analysis.
+- Compliance ticket posture and object-level compliance analysis.
+- Equity compensation, grant, tax-treatment, valuation, and PTEP analysis.
+- Funding round and exit waterfall analysis.
+- Workflow, pending payment, and tax-withholding analysis.
+- Board presentation and grant approval pack preparation.
+
+These skills are loaded automatically by Claude Code when relevant. MCP tools themselves are discovered dynamically from the Slice server; run `/mcp slice` to inspect the current tool list.
 
 ## Prerequisites
 
