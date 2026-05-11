@@ -1,0 +1,57 @@
+{
+  "description": "Pre-load Slice skill guidance when matching MCP tools are called",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__slice__(cap_table_.*|ownership_.*|share_classes_.*|equity_pools_.*|rounds_.*|stakeholders_.*|companies_.*|valuations_.*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/guide-cap-table.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__slice__(securities_.*|grants_.*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/guide-securities.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__slice__(compliance_.*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/guide-compliance.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__slice__(workflows_.*|payments_.*|tax_withholding_.*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/guide-workflows.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__slice__(waterfall_.*|exit_.*|proceeds_.*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/guide-waterfall.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

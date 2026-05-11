@@ -1,0 +1,25 @@
+name: Validate Plugin
+
+on:
+  pull_request:
+    paths:
+      - "plugins/slice/**"
+      - ".claude-plugin/**"
+      - "AGENTS.md"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+
+      - name: Install Claude CLI
+        run: npm install -g @anthropic-ai/claude-code@latest
+
+      - name: Validate plugin
+        run: claude plugin validate plugins/slice
+
+      - name: Validate versions in sync
+        run: bash scripts/validate-versions.sh

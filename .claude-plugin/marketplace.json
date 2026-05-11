@@ -13,6 +13,12 @@
       "name": "slice",
       "source": "./plugins/slice",
       "description": "Read-only Slice cap-table, securities, compliance, and workflow access via the Slice MCP server.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Slice Global Equity",
+        "email": "support@sliceglobal.com"
+      },
+      "license": "MIT",
       "category": "data",
       "keywords": [
         "cap-table",
