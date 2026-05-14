@@ -43,7 +43,7 @@ These skills are loaded automatically by Claude Code when relevant. MCP tools th
 
 ## Install
 
-In Claude Code, run:
+### Claude Code (CLI)
 
 ```shell
 /plugin marketplace add Global-Slice/claude-plugin
@@ -51,6 +51,14 @@ In Claude Code, run:
 ```
 
 The first command registers this repository as a marketplace; the second installs the `slice` plugin from it.
+
+### claude.ai web
+
+Download the latest release zip and upload it in your Claude settings:
+
+```text
+https://github.com/Global-Slice/claude-plugin/releases/latest/download/slice-claude.zip
+```
 
 ## First-time authentication
 

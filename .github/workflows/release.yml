@@ -1,0 +1,49 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build release zip
+        run: bash scripts/build-release-claude.sh
+
+      - name: Validate release versions
+        run: |
+          bash scripts/validate-versions.sh
+          CANONICAL=$(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' plugins/slice/.claude-plugin/plugin.json | head -n1)
+          EXPECTED_TAG="v${CANONICAL}"
+          if [[ "${GITHUB_REF_NAME}" != "${EXPECTED_TAG}" ]]; then
+            echo "error: git tag ${GITHUB_REF_NAME} does not match plugin version ${CANONICAL} (expected ${EXPECTED_TAG})" >&2
+            exit 1
+          fi
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          ZIP_FILES=(dist/slice-claude-*.zip)
+          if [[ ${#ZIP_FILES[@]} -ne 1 ]] || [[ ! -f "${ZIP_FILES[0]}" ]]; then
+            echo "error: expected exactly one zip in dist/" >&2
+            exit 1
+          fi
+          VERSIONED_ZIP="${ZIP_FILES[0]}"
+          FIXED_ZIP="dist/slice-claude.zip"
+          cp "${VERSIONED_ZIP}" "${FIXED_ZIP}"
+          if gh release view "${TAG}" >/dev/null 2>&1; then
+            gh release upload "${TAG}" "${VERSIONED_ZIP}" "${FIXED_ZIP}" --clobber
+          else
+            gh release create "${TAG}" "${VERSIONED_ZIP}" "${FIXED_ZIP}" \
+              --title "${TAG}" \
+              --generate-notes
+          fi
