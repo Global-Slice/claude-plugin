@@ -4,7 +4,7 @@ Contributor guide for AI agents working on the Slice Claude plugin marketplace.
 
 ## Repository layout
 
-```
+```text
 claude-plugin/
 ├── .claude-plugin/marketplace.json   # Marketplace manifest (lists all plugins)
 ├── .github/

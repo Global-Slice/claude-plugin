@@ -56,7 +56,7 @@ The first command registers this repository as a marketplace; the second install
 
 Download the latest release zip and upload it in your Claude settings:
 
-```
+```text
 https://github.com/Global-Slice/claude-plugin/releases/latest/download/slice-claude.zip
 ```
 

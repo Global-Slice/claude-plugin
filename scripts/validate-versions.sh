@@ -29,12 +29,18 @@ for rel in "${files[@]}"; do
     (( errors++ )) || true
     continue
   fi
+  versions=$(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "${file}")
+  if [[ -z "${versions}" ]]; then
+    echo "NO_VERSIONS ${rel}: no \"version\" fields found in ${file}"
+    (( errors++ )) || true
+    continue
+  fi
   while IFS= read -r found; do
     if [[ "${found}" != "${canonical}" ]]; then
       echo "MISMATCH ${rel}: expected ${canonical}, found ${found}"
       (( errors++ )) || true
     fi
-  done < <(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "${file}")
+  done <<< "${versions}"
 done
 
 if [[ "${errors}" -eq 0 ]]; then
