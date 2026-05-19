@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'plugins/slice/.claude-plugin/plugin.json'
+      - 'plugins/slice-global/.claude-plugin/plugin.json'
 
 jobs:
   tag:
@@ -18,9 +18,9 @@ jobs:
       - name: Read version
         id: version
         run: |
-          VERSION=$(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' plugins/slice/.claude-plugin/plugin.json | head -n1)
+          VERSION=$(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' plugins/slice-global/.claude-plugin/plugin.json | head -n1)
           if [[ -z "${VERSION}" ]]; then
-            echo "error: could not read version from plugins/slice/.claude-plugin/plugin.json" >&2
+            echo "error: could not read version from plugins/slice-global/.claude-plugin/plugin.json" >&2
             exit 1
           fi
           echo "value=${VERSION}" >> "$GITHUB_OUTPUT"

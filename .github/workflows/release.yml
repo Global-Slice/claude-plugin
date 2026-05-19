@@ -20,7 +20,7 @@ jobs:
       - name: Validate release versions
         run: |
           bash scripts/validate-versions.sh
-          CANONICAL=$(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' plugins/slice/.claude-plugin/plugin.json | head -n1)
+          CANONICAL=$(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' plugins/slice-global/.claude-plugin/plugin.json | head -n1)
           EXPECTED_TAG="v${CANONICAL}"
           if [[ "${GITHUB_REF_NAME}" != "${EXPECTED_TAG}" ]]; then
             echo "error: git tag ${GITHUB_REF_NAME} does not match plugin version ${CANONICAL} (expected ${EXPECTED_TAG})" >&2

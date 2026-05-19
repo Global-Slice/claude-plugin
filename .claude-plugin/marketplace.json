@@ -6,20 +6,19 @@
   },
   "metadata": {
     "description": "Official Slice plugins for Claude Code.",
-    "version": "0.1.0"
+    "version": "1.0.0"
   },
   "plugins": [
     {
-      "name": "slice",
-      "source": "./plugins/slice",
-      "description": "Read-only Slice cap-table, securities, compliance, and workflow access via the Slice MCP server.",
-      "version": "0.1.0",
+      "name": "slice-global",
+      "source": "./plugins/slice-global",
+      "description": "Read-only Slice cap table, securities, compliance, and workflow access via the Slice MCP server.",
       "author": {
         "name": "Slice Global Equity",
         "email": "support@sliceglobal.com"
       },
       "license": "MIT",
-      "category": "data",
+      "category": "productivity",
       "keywords": [
         "cap-table",
         "equity",

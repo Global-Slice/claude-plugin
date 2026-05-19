@@ -1,20 +1,19 @@
-# `slice` plugin
+# `slice-global` plugin
 
-Read-only access to your [Slice](https://www.sliceglobal.com) cap-table, grants, shares, warrants, convertibles, ownership, equity plans, compliance tickets, workflows, valuations, and company settings for [Claude Code](https://code.claude.com), powered by the Slice MCP server.
+Read-only access to your [Slice](https://www.sliceglobal.com) cap table, grants, shares, warrants, convertibles, ownership, equity plans, compliance tickets, workflows, valuations, and company settings for [Claude Code](https://code.claude.com), powered by the Slice MCP server.
 
 ## Install
 
 ```shell
 /plugin marketplace add Global-Slice/claude-plugin
-/plugin install slice@slice-plugins
+/plugin install slice-global@slice-plugins
 ```
-
 
 ## Capabilities
 
-The Slice MCP server exposes read-only tools for cap-table, securities, ownership, stakeholders, share classes, rounds, ESOP pools, compliance tickets, workflows, payments, tax withholding, valuations, and related company configuration. Run `/mcp slice` to see the current tool list.
+The Slice MCP server exposes read-only tools for cap-table, securities, ownership, stakeholders, share classes, rounds, ESOP pools, compliance tickets, workflows, payments, tax withholding, valuations, and related company configuration. Run `/mcp slice-global` to see the current tool list.
 
-This plugin also includes Claude skills for using those tools effectively:
+This plugin also includes Claude skills for using those tools effectively. Claude Code auto-loads each skill when its description matches the user's request:
 
 - `securities-analysis`
 - `cap-table-analysis`
@@ -25,7 +24,7 @@ This plugin also includes Claude skills for using those tools effectively:
 - `workflows-analysis`
 - `board-presentation-analysis`
 
-The skills favor aggregate/filter-first workflows and avoid dumping large raw records into the chat context.
+The skills favour aggregate/filter-first workflows and avoid dumping large raw records into the chat context.
 
 ## First-time authentication
 
@@ -34,8 +33,8 @@ The first time Claude calls a Slice tool, Claude Code opens your browser to comp
 ## Verify
 
 ```shell
-/mcp                  # the `slice` server should appear as connected
-/mcp slice            # lists every tool the Slice MCP server exposes
+/mcp                  # the `slice-global` server should appear as connected
+/mcp slice-global     # lists every tool the Slice MCP server exposes
 ```
 
 ## Security & privacy
@@ -46,6 +45,6 @@ The first time Claude calls a Slice tool, Claude Code opens your browser to comp
 
 ## Troubleshooting
 
-If `/mcp slice` shows auth errors, run `/mcp` and reconnect the `slice` server to restart the OAuth flow and replace any stale tokens.
+If `/mcp slice-global` shows auth errors, run `/mcp` and reconnect the `slice-global` server to restart the OAuth flow and replace any stale tokens.
 
 For more details, see the [marketplace README](../../README.md). For help, contact [support@sliceglobal.com](mailto:support@sliceglobal.com).
