@@ -3,7 +3,7 @@ name: Validate Plugin
 on:
   pull_request:
     paths:
-      - "plugins/slice/**"
+      - "plugins/slice-global/**"
       - ".claude-plugin/**"
       - "AGENTS.md"
 
@@ -19,7 +19,7 @@ jobs:
         run: npm install -g @anthropic-ai/claude-code@latest
 
       - name: Validate plugin
-        run: claude plugin validate plugins/slice
+        run: claude plugin validate plugins/slice-global
 
       - name: Validate versions in sync
         run: bash scripts/validate-versions.sh

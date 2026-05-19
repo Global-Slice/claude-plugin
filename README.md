@@ -4,7 +4,7 @@ Official [Claude Code](https://code.claude.com) plugins published by [Slice Glob
 
 This repository is a Claude Code [plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces). It currently ships a single plugin:
 
-- [`slice`](./plugins/slice) — read-only access to your Slice cap-table, grants, shares, warrants, convertibles, ownership, equity plans, compliance tickets, workflows, valuations, and company settings through the Slice MCP server.
+- [`slice-global`](./plugins/slice-global) — read-only access to your Slice cap table, grants, shares, warrants, convertibles, ownership, equity plans, compliance tickets, workflows, valuations, and company settings through the Slice MCP server.
 
 ## What you can ask Claude
 
@@ -34,12 +34,16 @@ The plugin also ships Claude skills that teach agents how to use Slice MCP tools
 - Workflow, pending payment, and tax-withholding analysis.
 - Board presentation and grant approval pack preparation.
 
-These skills are loaded automatically by Claude Code when relevant. MCP tools themselves are discovered dynamically from the Slice server; run `/mcp slice` to inspect the current tool list.
+Claude Code auto-loads each skill when the user's request matches its frontmatter description. MCP tools themselves are discovered dynamically from the Slice server; run `/mcp slice-global` to inspect the current tool list.
 
 ## Prerequisites
 
 - [Claude Code](https://code.claude.com/docs/en/setup) installed.
 - An active [Slice](https://www.sliceglobal.com) login at `app.sliceglobal.com`.
+
+## Reviewer / evaluator access
+
+The Slice MCP server is gated behind OAuth against `app.sliceglobal.com`, which is a paid B2B product. If you are reviewing or evaluating this plugin and do not have a Slice account, email [support@sliceglobal.com](mailto:support@sliceglobal.com) to request a sandbox tenant and test credentials.
 
 ## Install
 
@@ -47,10 +51,10 @@ These skills are loaded automatically by Claude Code when relevant. MCP tools th
 
 ```shell
 /plugin marketplace add Global-Slice/claude-plugin
-/plugin install slice@slice-plugins
+/plugin install slice-global@slice-plugins
 ```
 
-The first command registers this repository as a marketplace; the second installs the `slice` plugin from it.
+The first command registers this repository as a marketplace; the second installs the `slice-global` plugin from it.
 
 ### claude.ai web
 
@@ -67,9 +71,9 @@ The first time Claude calls a Slice tool, Claude Code opens your browser to comp
 ## Verify the install
 
 ```shell
-/plugin list          # slice@slice-plugins should be listed and enabled
-/mcp                  # the `slice` server should appear as connected
-/mcp slice            # lists every tool the Slice MCP server exposes
+/plugin list             # slice-global@slice-plugins should be listed and enabled
+/mcp                     # the `slice-global` server should appear as connected
+/mcp slice-global        # lists every tool the Slice MCP server exposes
 ```
 
 ## Security & privacy
@@ -81,10 +85,10 @@ The first time Claude calls a Slice tool, Claude Code opens your browser to comp
 
 ## Troubleshooting
 
-- **`/mcp slice` shows "not connected" or auth errors**: run `/mcp` and reconnect the `slice` server. This restarts the OAuth flow and replaces any stale tokens.
+- **`/mcp slice-global` shows "not connected" or auth errors**: run `/mcp` and reconnect the `slice-global` server. This restarts the OAuth flow and replaces any stale tokens.
 - **Browser did not open during sign-in**: copy the URL printed in the Claude Code output and open it manually.
 - **Plugin not visible after install**: run `/reload-plugins`, then `/plugin list`.
-- **Need to fully reset**: `/plugin uninstall slice@slice-plugins` followed by `/plugin install slice@slice-plugins`.
+- **Need to fully reset**: `/plugin uninstall slice-global@slice-plugins` followed by `/plugin install slice-global@slice-plugins`.
 
 If the issue persists, please contact [support@sliceglobal.com](mailto:support@sliceglobal.com).
 

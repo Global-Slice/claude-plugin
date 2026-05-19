@@ -5,7 +5,7 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-canonical_file="plugins/slice/.claude-plugin/plugin.json"
+canonical_file="plugins/slice-global/.claude-plugin/plugin.json"
 canonical=$(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' \
   "${REPO_ROOT}/${canonical_file}" | head -n1)
 

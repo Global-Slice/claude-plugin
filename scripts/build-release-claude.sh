@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Build a release zip for upload to the claude.ai private marketplace.
 #
-# Produces dist/slice-claude-<version>.zip from plugins/slice/, with
-# .claude-plugin/plugin.json, .mcp.json, hooks/, assets/, and skills/
-# at the zip root (the layout claude.ai expects).
+# Produces dist/slice-claude-<version>.zip from plugins/slice-global/, with
+# .claude-plugin/plugin.json, .mcp.json, and skills/ at the zip root (the
+# layout claude.ai expects).
 #
 # Whitelist-based: only files matching the patterns below are included.
 #
@@ -11,7 +11,7 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PLUGIN_SRC="${REPO_ROOT}/plugins/slice"
+PLUGIN_SRC="${REPO_ROOT}/plugins/slice-global"
 OUT_DIR="${REPO_ROOT}/dist"
 
 command -v zip >/dev/null 2>&1 || { echo "error: 'zip' is required" >&2; exit 1; }
@@ -53,8 +53,6 @@ stage_plugin() {
 
   copy_if_exists "${src}/.claude-plugin/plugin.json" "${stage}/.claude-plugin/plugin.json"
   copy_if_exists "${src}/.mcp.json" "${stage}/.mcp.json"
-  copy_glob "${src}/hooks" "${stage}/hooks" "*.json" "*.sh"
-  copy_glob "${src}/assets" "${stage}/assets" "*.svg" "*.png" "*.jpg" "*.jpeg"
 
   if [[ -d "${src}/skills" ]]; then
     for skill_dir in "${src}/skills"/*/; do
