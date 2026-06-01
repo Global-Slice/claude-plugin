@@ -1,5 +1,7 @@
 {
   "name": "slice-plugins",
+  "description": "Official Slice plugin marketplace for Claude Code — read-only cap table, equity, compliance, and workflow analysis via the Slice MCP server.",
+  "version": "1.0.0",
   "owner": {
     "name": "Slice Global Equity",
     "email": "support@sliceglobal.com"
@@ -11,14 +13,31 @@
   "plugins": [
     {
       "name": "slice-global",
+      "displayName": "Slice Global",
       "source": "./plugins/slice-global",
-      "description": "Read-only Slice cap table, securities, compliance, and workflow access via the Slice MCP server.",
+      "description": "Read-only access to your Slice cap table, securities, ownership, compliance, workflows, valuations, and equity plans via the Slice MCP server.",
       "author": {
         "name": "Slice Global Equity",
-        "email": "support@sliceglobal.com"
+        "email": "support@sliceglobal.com",
+        "url": "https://www.sliceglobal.com"
       },
+      "homepage": "https://github.com/Global-Slice/claude-plugin/tree/main/plugins/slice-global",
+      "repository": "https://github.com/Global-Slice/claude-plugin",
       "license": "MIT",
       "category": "productivity",
+      "tags": [
+        "slice",
+        "cap-table",
+        "equity",
+        "mcp",
+        "finance",
+        "compliance",
+        "workflows",
+        "securities",
+        "esop",
+        "waterfall",
+        "valuations"
+      ],
       "keywords": [
         "cap-table",
         "equity",
@@ -26,7 +45,21 @@
         "finance",
         "compliance",
         "workflows",
-        "securities"
+        "securities",
+        "esop",
+        "stakeholders",
+        "waterfall",
+        "valuations"
+      ],
+      "skills": [
+        "./skills/board-presentation-analysis",
+        "./skills/cap-table-analysis",
+        "./skills/compliance-analysis",
+        "./skills/equity-compensation-analysis",
+        "./skills/funding-rounds-analysis",
+        "./skills/securities-analysis",
+        "./skills/waterfall-analysis",
+        "./skills/workflows-analysis"
       ]
     }
   ]

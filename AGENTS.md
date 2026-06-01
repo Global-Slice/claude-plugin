@@ -31,9 +31,10 @@ claude-plugin/
 The canonical version lives in `plugins/slice-global/.claude-plugin/plugin.json`. When bumping:
 
 1. Update `version` in `plugins/slice-global/.claude-plugin/plugin.json` (source of truth).
-2. Update `metadata.version` in `.claude-plugin/marketplace.json`. **Do not** add a `version` field to the plugin entry inside `marketplace.json` — `plugin.json` is the only source of truth.
-3. Add a new dated entry to `CHANGELOG.md`.
-4. Merge to `main` — the `auto-tag.yml` workflow creates the git tag automatically.
+2. Update top-level `version` and `metadata.version` in `.claude-plugin/marketplace.json`. **Do not** add a `version` field to the plugin entry inside `marketplace.json` — `plugin.json` is the only source of truth.
+3. Keep marketplace discovery fields current: top-level `description`, plugin `displayName`, `tags`, `keywords`, `homepage`, `repository`, and the `skills` path list (relative to each plugin root).
+4. Add a new dated entry to `CHANGELOG.md`.
+5. Merge to `main` — the `auto-tag.yml` workflow creates the git tag automatically.
 
 Run `bash scripts/validate-versions.sh` locally to verify all version fields match before pushing.
 

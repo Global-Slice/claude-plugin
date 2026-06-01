@@ -18,6 +18,9 @@ jobs:
       - name: Install Claude CLI
         run: npm install -g @anthropic-ai/claude-code@latest
 
+      - name: Validate marketplace
+        run: claude plugin validate .
+
       - name: Validate plugin
         run: claude plugin validate plugins/slice-global
 
