@@ -43,7 +43,7 @@ Claude Code auto-loads each skill when the user's request matches its frontmatte
 
 ## Reviewer / evaluator access
 
-The Slice MCP server is gated behind OAuth against `app.sliceglobal.com`, which is a paid B2B product. If you are reviewing or evaluating this plugin and do not have a Slice account, email [support@sliceglobal.com](mailto:support@sliceglobal.com) to request a sandbox tenant and test credentials.
+The Slice MCP server is gated behind OAuth against `mcp.app.sliceglobal.com`, which is a paid B2B product. If you are reviewing or evaluating this plugin and do not have a Slice account, email [support@sliceglobal.com](mailto:support@sliceglobal.com) to request a sandbox tenant and test credentials.
 
 ## Install
 

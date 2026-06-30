@@ -1,14 +1,14 @@
 {
   "name": "slice-plugins",
   "description": "Official Slice plugin marketplace for Claude Code — read-only cap table, equity, compliance, and workflow analysis via the Slice MCP server.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "owner": {
     "name": "Slice Global Equity",
     "email": "support@sliceglobal.com"
   },
   "metadata": {
     "description": "Official Slice plugins for Claude Code.",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "plugins": [
     {

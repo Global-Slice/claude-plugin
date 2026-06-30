@@ -1,9 +1,14 @@
 ---
 name: workflows-analysis
+version: "1.0"
 description: Guides Slice MCP workflow analysis using workflow list/get-one tools, exercise payment reconciliation, and tax withholding tools. Use when answering questions about grant letters, corporate approvals, share certificate workflows, exercise workflows, pending payments, tax withholding, workflow status, stuck workflows, documents, trustee updates, or stakeholder/security workflow progress.
 ---
 
 # Workflows Analysis
+
+## Scope
+
+Use for workflow process state, payments, and tax withholding. MCP cannot approve or mutate workflows. For compliance tickets, use compliance-analysis. For grant economics or vesting, use securities-analysis or equity-compensation-analysis.
 
 ## Core Principle
 
@@ -61,12 +66,7 @@ Keep workflow status separate from legal/economic state. A completed workflow ma
 
 ## Large Requests
 
-Workflow lists can be large and are not the right output format for raw dumps. For large requests:
-
-- Aggregate by type, customer-facing status, liveness status, stakeholder, country, tax treatment, created date, or deleted state.
-- Fetch full details only for a small set of representative or user-specified workflow IDs.
-- For stalled-workflow questions, group by status and surface the oldest or highest-impact examples rather than listing every row.
-- If the user asks for a complete workflow export, explain that the right shape is a file report/export and avoid pasting raw workflow arrays into chat. Until that tool exists, provide aggregate counts, notable examples, and the filters used.
+Aggregate workflow lists by type, status, stakeholder, or date. Fetch `workflows_get_one` only for representative or user-specified IDs. Summarize in chat; for full exports, note file-report is the right shape — do not dump raw arrays.
 
 ## Response Style
 

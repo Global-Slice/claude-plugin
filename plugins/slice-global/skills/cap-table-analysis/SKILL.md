@@ -1,9 +1,14 @@
 ---
 name: cap-table-analysis
+version: "1.0"
 description: Guides Slice MCP cap-table and ESOP-pool analysis by combining company summary, cap table, ownership, stakeholder, share class, funding round, equity pool, valuation, and securities tools. Use when answering questions about cap table structure, stakeholder holdings, ownership, ESOP pools, share classes, rounds, dilution, option pools, or securities at company or stakeholder level.
 ---
 
 # Cap Table Analysis
+
+## Scope
+
+Use for company or stakeholder ownership, ESOP pools, share classes, and rounds. For single-security deep dives or vesting timelines, use securities-analysis. For employee grant compensation or PTEP, use equity-compensation-analysis. For exit proceeds, use waterfall-analysis.
 
 ## Ground Truth And Calculation Modes
 
@@ -72,15 +77,7 @@ Watch for reversed or corrected events, multiple stakeholder entities for the sa
 
 ## Large Requests
 
-Avoid pulling the whole cap table or all securities into context unless the user explicitly needs raw rows. For large requests:
-
-- Start with `companies_get_summary`, `cap_table_get_summary`, `ownership_get_company_breakdown`, and `equity_pools_get_summaries`.
-- Apply filters in `cap_table_search_entries`: stakeholder, share class, security type, status, min/max shares, date, `limit`, and `offset`.
-- Page with `limit: 50` and advance `offset` only while `hasNext` is true.
-- Aggregate compact rows into counts, totals, top stakeholders, share-class totals, status breakdowns, or exceptions.
-- Fetch full stakeholder or security records only for the small set needed to explain the result.
-
-If the user asks for a large detailed cap-table export, explain that the right shape is a file report/export and avoid dumping the raw table into chat. Until that tool exists, return the key aggregates, notable rows, and the filters used.
+Start with summary tools (`companies_get_summary`, `cap_table_get_summary`, `ownership_get_company_breakdown`, `equity_pools_get_summaries`). Filter and page `cap_table_search_entries` with `limit: 50`. Summarize in chat; for full exports, note file-report is the right shape — do not dump raw arrays.
 
 ## Response Style
 

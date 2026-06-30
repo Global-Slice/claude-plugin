@@ -1,9 +1,14 @@
 ---
 name: securities-analysis
+version: "1.0"
 description: Guides analysis of Slice securities through MCP securities search, find, list, get, valuation, tax-treatment, and vesting timeline tools. Use when answering questions about grants, shares, warrants, convertibles, stakeholder securities, security status, quantities, IDs, tax treatments, valuations, or vesting timelines from Slice MCP data.
 ---
 
 # Securities Analysis
+
+## Scope
+
+Use for any security type (grants, shares, warrants, convertibles) and vesting timelines. For employee grant compensation, exercise, or PTEP focus, prefer equity-compensation-analysis. For company ownership totals, use cap-table-analysis. For compliance tickets, use compliance-analysis.
 
 ## Ground Truth And Defaults
 
@@ -44,15 +49,7 @@ Exercise price requirements are anchored to FMV in many regimes. Missing or stal
 
 ## Large Requests
 
-Do not pull many full security records into context by default. For large requests:
-
-- Push filtering into the MCP calls: security type, stakeholder, status, date or date range, share class, equity plan, beneficiary, and grant type filters.
-- Work from compact search/find/list results first. Aggregate totals, counts, statuses, stakeholder groupings, grant-type mixes, or top-N slices from those compact rows.
-- Fetch full records only for the specific securities needed to answer the question.
-- Summarize aggregate results in the response instead of pasting large raw item arrays.
-- If the user asks for a large detailed export, explain that the right shape is a file report/export and avoid dumping the full dataset into chat. Until a file-report tool exists, provide a concise summary plus the exact filters and pagination strategy used.
-
-Prefer iterative narrowing over exhaustive retrieval: search/filter, inspect totals and `hasNext`, refine filters, then fetch details for the smallest useful set.
+Filter in MCP calls; aggregate compact search/find rows before fetching full records. Page with `limit: 50` and `offset` while `hasNext` is true. Summarize in chat; for full exports, note file-report is the right shape — do not dump raw arrays.
 
 ## Vesting Timeline
 
