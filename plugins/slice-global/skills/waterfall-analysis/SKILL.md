@@ -1,13 +1,16 @@
 ---
 name: waterfall-analysis
+version: "1.0"
 description: Guides exit waterfall analysis using Slice MCP cap-table, share-class, securities, rounds, and ownership tools. Use when answering questions about exit proceeds, liquidation preferences, participating preferred, conversion thresholds, proceeds allocation, MOIC, investor returns, or ordinary/common shareholder payouts.
 ---
 
 # Waterfall Analysis
 
-## When To Use
+## Scope
 
-Use this skill when the user asks how exit proceeds would be distributed in a sale, merger, IPO, liquidation, or other liquidity event. Waterfall analysis is term-sensitive; do not present exact legal allocation unless share-class terms and seniority are available from Slice data or supplied by the user.
+Use when the user asks how exit proceeds would be distributed in a sale, merger, IPO, liquidation, or other liquidity event. For current cap-table ownership without an exit scenario, use cap-table-analysis. For round history and total raised, use funding-rounds-analysis.
+
+Waterfall analysis is term-sensitive; do not present exact legal allocation unless share-class terms and seniority are available from Slice data or supplied by the user.
 
 ## Input Workflow
 

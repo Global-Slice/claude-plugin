@@ -1,9 +1,14 @@
 ---
 name: compliance-analysis
+version: "1.0"
 description: Guides Slice MCP compliance analysis using compliance ticket breakdowns and object-level compliance tickets, plus related stakeholder, securities, equity plan, equity pool, valuation, tax-treatment, and cap-table tools. Use when answering questions about company compliance posture, compliance tickets, missing data, overdue issues, severity, affected objects, stale valuations, tax treatment issues, or compliance status for a stakeholder, security, equity pool, equity plan, valuation, share, grant, or exercise request.
 ---
 
 # Compliance Analysis
+
+## Scope
+
+Use for compliance tickets and posture. Not a substitute for legal advice. For workflow process status without compliance focus, use workflows-analysis. For cap-table totals without compliance tickets, use cap-table-analysis.
 
 ## Core Principle
 
@@ -79,12 +84,7 @@ Keep the compliance answer separate from the cap-table or securities facts: iden
 
 ## Large Requests
 
-Avoid dumping full compliance ticket arrays into chat. For large compliance requests:
-
-- Use `compliance_get_tickets_breakdown` as the default answer source.
-- Aggregate by status, severity, object type, top issue group, and time sensitivity.
-- Fetch full tickets only for a small set of objects or examples needed to explain an issue group.
-- If the user asks for a complete compliance export or all ticket bodies, explain that the right shape is a file report/export and avoid pasting raw tickets into the conversation. Until that tool exists, provide the aggregate summary, representative object examples, and the exact follow-up filters or object IDs needed.
+Default to `compliance_get_tickets_breakdown`. Fetch full object tickets only for a small example set. Summarize in chat; for full exports, note file-report is the right shape — do not dump raw ticket arrays.
 
 ## Response Style
 

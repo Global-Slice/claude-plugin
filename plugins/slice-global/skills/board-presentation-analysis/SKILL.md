@@ -1,9 +1,14 @@
 ---
 name: board-presentation-analysis
+version: "1.0"
 description: Guides creation of board-ready Slice presentations using MCP tools, especially offered-status grants and ESOP/equity-pool summaries. Use when preparing board decks, board approval packs, grant approval summaries, ESOP pool updates, option pool utilization slides, or board-facing equity recommendations.
 ---
 
 # Board Presentation Analysis
+
+## Scope
+
+Use for board decks and grant-approval packs. For company cap-table totals without a board format, use cap-table-analysis. For compliance posture without board context, use compliance-analysis. For workflow status only, use workflows-analysis.
 
 ## Core Principle
 

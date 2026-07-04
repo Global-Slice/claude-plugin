@@ -1,9 +1,14 @@
 ---
 name: equity-compensation-analysis
+version: "1.0"
 description: Guides Slice MCP analysis of equity compensation, grants, options, RSUs, vesting, exercises, forfeitures, PTEP, tax treatments, and valuations. Use when answering questions about employee equity, grant positions, vested or exercisable quantities, exercise price, FMV/409A, option pool consumption, tax treatment, or award-type mechanics.
 ---
 
 # Equity Compensation Analysis
+
+## Scope
+
+Use for employee grant compensation, vesting, exercise, PTEP, and tax treatment. For warrants, convertibles, or non-grant securities, use securities-analysis. For company-wide cap table or ESOP pool totals, use cap-table-analysis.
 
 ## Ground Truth And Clarification
 

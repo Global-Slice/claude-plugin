@@ -1,9 +1,14 @@
 ---
 name: funding-rounds-analysis
+version: "1.0"
 description: Guides Slice MCP analysis of funding rounds, share classes, price per share, primary issuances, secondary transactions, convertibles, SAFEs, option-pool top-ups, total raised, and dilution. Use when answering questions about rounds, Series A/B/C, seed rounds, bridge rounds, investor positions, round history, valuation, PPS, or post-money ownership.
 ---
 
 # Funding Rounds Analysis
+
+## Scope
+
+Use for round mechanics, proceeds, and dilution. For company-wide cap-table structure without round focus, use cap-table-analysis. For exit proceeds allocation, use waterfall-analysis.
 
 ## Tool Workflow
 
