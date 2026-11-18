@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- OpenAI (ChatGPT/Codex) package now declares the existing Slice MCP server (`"mcpServers": "./.mcp.json"` in `.codex-plugin/plugin.json`). The portal rejected the previous package with "This package omits the plugin's existing MCP".
+
+### Added
+
+- `plugins/slice-global/.codex-plugin/plugin.json` and `scripts/build-release-codex.sh` so the OpenAI package is built from this repo instead of edited by hand.
+
 ## [1.0.0] - 2026-05-19
 
 ### Changed

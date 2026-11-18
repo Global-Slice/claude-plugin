@@ -19,6 +19,7 @@ echo
 
 files=(
   ".claude-plugin/marketplace.json"
+  "plugins/slice-global/.codex-plugin/plugin.json"
 )
 
 errors=0
