@@ -1,0 +1,27 @@
+{
+  "author": {
+    "name": "Slice Global Inc."
+  },
+  "description": "Slice provides authenticated, read-only access to your company\u2019s cap table, stakeholders, securities, equity pools, valuations, compliance tickets, workflows, and equity tax data.",
+  "interface": {
+    "capabilities": [],
+    "category": "Finance",
+    "defaultPrompt": [
+      "Give me an executive snapshot of our cap table today: ownership, fully diluted shares, ESOP availability, and grant totals.",
+      "Find Alex Chen in Slice and summarize their equity holdings, vesting status, and ownership percentage.",
+      "Show our latest 409A valuation, open compliance issues, and pending equity workflows"
+    ],
+    "developerName": "Slice Global Inc.",
+    "displayName": "Slice",
+    "longDescription": "Slice provides authenticated, read-only access to your company\u2019s cap table, stakeholders, securities, equity pools, valuations, compliance tickets, workflows, and equity tax data.",
+    "privacyPolicyURL": "https://www.sliceglobal.com/privacy",
+    "shortDescription": "Read Slice equity data",
+    "supportURL": "https://www.sliceglobal.com/contact",
+    "termsOfServiceURL": "https://www.sliceglobal.com/plans",
+    "websiteURL": "https://www.sliceglobal.com"
+  },
+  "mcpServers": "./.mcp.json",
+  "name": "app-6a82fa5af1108191bacda8dfa84af7d6",
+  "skills": "./skills",
+  "version": "1.0.1"
+}

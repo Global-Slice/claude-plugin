@@ -15,10 +15,12 @@ claude-plugin/
 │   └── dependabot.yml                        # GitHub Actions updates
 ├── scripts/
 │   ├── build-release-claude.sh               # Stage plugins/slice-global/ → dist/slice-claude-<v>.zip
+│   ├── build-release-codex.sh                # Zip plugins/slice-global/ → dist/slice-codex-<v>.zip (OpenAI portal)
 │   └── validate-versions.sh                  # Keep marketplace.json + plugin.json in sync
 ├── plugins/slice-global/                     # The slice-global plugin
 │   ├── .claude-plugin/plugin.json            # Plugin manifest (canonical version source)
-│   ├── .mcp.json                             # MCP server config (Slice HTTP endpoint)
+│   ├── .codex-plugin/plugin.json             # OpenAI (ChatGPT/Codex) manifest — must keep "mcpServers": "./.mcp.json"
+│   ├── .mcp.json                             # MCP server config (Slice HTTP endpoint), shared by both manifests
 │   └── skills/                               # Claude skills (one folder per skill)
 ├── AGENTS.md                                 # This file
 ├── CHANGELOG.md                              # Keep-a-Changelog format
@@ -55,4 +57,5 @@ Run `bash scripts/validate-versions.sh` locally to verify all version fields mat
 ## Scripts
 
 - `scripts/build-release-claude.sh` — Whitelist-based stager that flattens `plugins/slice-global/` into a zip whose root has the layout claude.ai expects. Run manually or via the `release.yml` workflow.
+- `scripts/build-release-codex.sh` — Builds the ZIP uploaded at platform.openai.com/plugins (`.codex-plugin/plugin.json`, `.mcp.json`, `skills/`). The OpenAI plugin already has the Slice MCP connected, so every upload must keep declaring it (`"mcpServers": "./.mcp.json"`, same server URL) or the portal rejects it with "This package omits the plugin's existing MCP". Keep the OpenAI-assigned `name` (`app-…`), never add `.app.json` / `apps`, and bump `version` on every upload.
 - `scripts/validate-versions.sh` — Checks all version fields against the canonical version. Run in CI via `validate_plugin.yml` and locally before pushing version bumps.
