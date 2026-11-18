@@ -21,6 +21,7 @@ claude-plugin/
 │   ├── .claude-plugin/plugin.json            # Plugin manifest (canonical version source)
 │   ├── .codex-plugin/plugin.json             # OpenAI (ChatGPT/Codex) manifest — must keep "mcpServers": "./.mcp.json"
 │   ├── .mcp.json                             # MCP server config (Slice HTTP endpoint), shared by both manifests
+│   ├── assets/logo.png                       # App icon for the OpenAI listing (not shipped in the Claude zip)
 │   └── skills/                               # Claude skills (one folder per skill)
 ├── AGENTS.md                                 # This file
 ├── CHANGELOG.md                              # Keep-a-Changelog format
@@ -57,5 +58,5 @@ Run `bash scripts/validate-versions.sh` locally to verify all version fields mat
 ## Scripts
 
 - `scripts/build-release-claude.sh` — Whitelist-based stager that flattens `plugins/slice-global/` into a zip whose root has the layout claude.ai expects. Run manually or via the `release.yml` workflow.
-- `scripts/build-release-codex.sh` — Builds the ZIP uploaded at platform.openai.com/plugins (`.codex-plugin/plugin.json`, `.mcp.json`, `skills/`). The OpenAI plugin already has the Slice MCP connected, so every upload must keep declaring it (`"mcpServers": "./.mcp.json"`, same server URL) or the portal rejects it with "This package omits the plugin's existing MCP". Keep the OpenAI-assigned `name` (`app-…`), never add `.app.json` / `apps`, and bump `version` on every upload.
-- `scripts/validate-versions.sh` — Checks all version fields against the canonical version. Run in CI via `validate_plugin.yml` and locally before pushing version bumps.
+- `scripts/build-release-codex.sh` — Builds the ZIP uploaded at platform.openai.com/plugins (`.codex-plugin/plugin.json`, `.mcp.json`, `skills/`). The OpenAI plugin already has the Slice MCP connected, so every upload must keep declaring it (`"mcpServers": "./.mcp.json"`, same server URL) or the portal rejects it with "This package omits the plugin's existing MCP". Keep the OpenAI-assigned `name` (`app-…`), never add `.app.json` / `apps`, and bump `version` in `.codex-plugin/plugin.json` on every upload — it tracks portal uploads and is independent of the Claude plugin version. The app icon (`assets/logo.png`) and the review test cases (`extensions["com.openai"].review.test_cases`, exactly 5 positive and 3 negative) are imported from the ZIP and read-only in the dashboard, so change them here and re-upload. Never put reviewer credentials in the package.
+- `scripts/validate-versions.sh` — Checks every `version` field in `.claude-plugin/marketplace.json` against the canonical version in `plugins/slice-global/.claude-plugin/plugin.json`. The Codex manifest (`plugins/slice-global/.codex-plugin/plugin.json`) is not checked; its version is independent. Run in CI via `validate_plugin.yml` and locally before pushing version bumps.

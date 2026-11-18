@@ -3,9 +3,64 @@
     "name": "Slice Global Inc."
   },
   "description": "Slice provides authenticated, read-only access to your company\u2019s cap table, stakeholders, securities, equity pools, valuations, compliance tickets, workflows, and equity tax data.",
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Executive cap table snapshot for the connected company.",
+              "prompt": "Give me an executive snapshot of our cap table today: ownership, fully diluted shares, ESOP availability, and grant totals.",
+              "tools_triggered": "companies_get_summary, cap_table_get_summary",
+              "expected_behavior": "Returns a concise read-only summary of the connected company: outstanding and fully diluted share totals, a breakdown by share class and security type, ESOP pool size and availability, and grant totals. Figures are labelled as outstanding or fully diluted."
+            },
+            {
+              "description": "Look up one stakeholder by name and summarize their equity.",
+              "prompt": "Find Alex Chen in Slice and summarize their equity holdings, vesting status, and ownership percentage.",
+              "tools_triggered": "stakeholders_search_by_name, stakeholders_get_holdings, ownership_get_stakeholder_breakdown",
+              "expected_behavior": "Resolves the stakeholder by name, then summarizes their grants, shares, and other securities with vested and unvested amounts and their outstanding and fully diluted ownership percentage. If several stakeholders match the name, asks which one is meant instead of guessing."
+            },
+            {
+              "description": "Latest 409A / fair market value valuation on file.",
+              "prompt": "What is our latest 409A valuation and when was it effective?",
+              "tools_triggered": "valuations_list",
+              "expected_behavior": "Returns the most recent valuation record with its effective date and fair market value per share. If the company has no valuation on file, says so instead of estimating a value."
+            },
+            {
+              "description": "Company-level compliance posture from Slice compliance tickets.",
+              "prompt": "What are our highest-risk open compliance issues?",
+              "tools_triggered": "compliance_get_tickets_breakdown",
+              "expected_behavior": "Summarizes active compliance tickets by severity, status, and object type, and highlights the top issue groups and time-sensitive items. Reports what the tickets say without presenting it as legal advice."
+            },
+            {
+              "description": "Status of in-progress equity workflows.",
+              "prompt": "Which equity workflows are currently pending, and what is each one waiting on?",
+              "tools_triggered": "workflows_list",
+              "expected_behavior": "Lists in-progress workflows, such as grant approvals or exercise requests, with their type, status, and the step or party each one is waiting on. Says clearly when there are no pending workflows."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Write request. The plugin is read-only, so it must not try to create or change grants or cap table data. Expected: explain that Slice data can only be read here and that the change has to be made in the Slice app.",
+              "prompt": "Grant 5,000 stock options to a new employee and update our cap table."
+            },
+            {
+              "description": "General education question that does not ask about the user's company data. Expected: answer from general knowledge without calling Slice tools.",
+              "prompt": "What is a 409A valuation and how often do US startups usually need one?"
+            },
+            {
+              "description": "Request about another company. Slice only exposes the equity data of the signed-in user's own company and has no data about other companies. Expected: do not call Slice tools for this, or explain that only the connected company's data is available.",
+              "prompt": "Show me OpenAI's cap table and who its largest investors are."
+            }
+          ]
+        }
+      }
+    }
+  },
   "interface": {
     "capabilities": [],
     "category": "Finance",
+    "composerIcon": "./assets/logo.png",
     "defaultPrompt": [
       "Give me an executive snapshot of our cap table today: ownership, fully diluted shares, ESOP availability, and grant totals.",
       "Find Alex Chen in Slice and summarize their equity holdings, vesting status, and ownership percentage.",
@@ -13,6 +68,7 @@
     ],
     "developerName": "Slice Global Inc.",
     "displayName": "Slice",
+    "logo": "./assets/logo.png",
     "longDescription": "Slice provides authenticated, read-only access to your company\u2019s cap table, stakeholders, securities, equity pools, valuations, compliance tickets, workflows, and equity tax data.",
     "privacyPolicyURL": "https://www.sliceglobal.com/privacy",
     "shortDescription": "Read Slice equity data",
@@ -23,5 +79,5 @@
   "mcpServers": "./.mcp.json",
   "name": "app-6a82fa5af1108191bacda8dfa84af7d6",
   "skills": "./skills",
-  "version": "1.0.1"
+  "version": "1.0.2"
 }
