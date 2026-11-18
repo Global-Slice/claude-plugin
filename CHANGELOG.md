@@ -11,9 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - OpenAI (ChatGPT/Codex) package now declares the existing Slice MCP server (`"mcpServers": "./.mcp.json"` in `.codex-plugin/plugin.json`). The portal rejected the previous package with "This package omits the plugin's existing MCP".
 
+- OpenAI package 1.0.2 resolves the portal findings "App icon required" and "Incomplete review information": adds `assets/logo.png` (`interface.logo` / `interface.composerIcon`) and 5 positive + 3 negative review test cases.
+
 ### Added
 
 - `plugins/slice-global/.codex-plugin/plugin.json` and `scripts/build-release-codex.sh` so the OpenAI package is built from this repo instead of edited by hand.
+
+### Changed
+
+- The OpenAI package version is no longer tied to the Claude plugin version; it is bumped per portal upload.
 
 ## [1.0.0] - 2026-05-19
 
